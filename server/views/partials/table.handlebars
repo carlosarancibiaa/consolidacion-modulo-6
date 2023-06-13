@@ -1,0 +1,125 @@
+{{!-------------------------------------------------------- tabla --}}
+<section id="" class="">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Genero</th>
+                <th scope="col">año</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.nombre}}</td>
+                <td>{{this.genero}}</td>
+                <td>{{this.año}}</td>
+                <td>{{this.autor}}</td>
+                <td><a class="btn btn-secondary detailBtn" href="/anime/{{this.id}}">Detalles</a></td>
+                <td><a class="btn btn-success updateBtn">Actualizar</a></td>
+                <td><button class="btn btn-danger deleteBtn">Eliminar</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <button id="crear2" class="btn btn-primary d-block">Crear</button>
+</section>
+
+
+<script>
+    //botones tabla
+    const detailBtn = document.querySelectorAll(".detailBtn")
+    const updateBtn = document.querySelectorAll(".updateBtn");
+    const deleteBtn = document.querySelectorAll(".deleteBtn");
+
+    //id capturado
+    let id;
+
+//mostrar/ocultar botones
+    crear2.addEventListener('click', (event) => {
+        form.classList.replace('d-none', 'd-block')
+        btnActualizar.classList.replace("d-block", "d-none")
+        btnCrear.classList.replace('d-none', 'd-block')
+        formCreateUser.reset();
+    })
+
+    //Escuchamos los botones actualizar y si desencadenan un evento capturamos los valores correspondientes a la fila a la que hace referencia
+    for (let i = 0; i < updateBtn.length; i++) {
+        updateBtn[i].addEventListener("click", (event) => {
+
+            form.classList.replace("d-none", "d-block");
+            btnCrear.classList.replace("d-block", "d-none")
+            btnActualizar.classList.replace('d-none', 'd-block')
+            
+            let path = event.srcElement.offsetParent.nextSibling.parentElement.cells
+            id = path[0].innerText
+
+            createNombre.value = path[1].innerText;
+            createGenero.value = path[2].innerText;
+            createAño.value = path[3].innerText;
+            createAutor.value = path[4].innerText;
+        });
+    }
+
+
+
+    //-------------------------------------------------------------eliminar
+// Escuchamos los botones eliminar
+    for (let i = 0; i < deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener("click", (event) => {
+
+            let path = event.srcElement.offsetParent.nextSibling.parentElement.cells
+            id = path[0].innerText;
+
+            let requestOp = {
+                method: 'DELETE',
+                redirect: 'follow'
+            };
+
+            //fetch("http://localhost:3000/animes/" + id, requestOp)
+            fetch(`http://localhost:3000/animes/${id}`, requestOp)
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json()
+                    } else {
+                        throw new Error("Error al eliminar");
+                    }
+                })
+                .then(result => {
+                    alert(result.message)
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
+        })
+    }
+    // capturamos todos los botones para ver Detalles
+    for (let i = 0; i < detailBtn.length; i++) {
+            detailBtn[i].addEventListener("click", (event) => {
+                console.log('hola detalle')
+
+                let path = event.srcElement.offsetParent.nextSibling.parentElement.cells
+                let id = path[0].innerText;
+
+                var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+
+                fetch(`http://localhost:3000/anime/${id}`, requestOptions)
+                    .then(response => response.json())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+            });
+        }
+
+
+
+</script>

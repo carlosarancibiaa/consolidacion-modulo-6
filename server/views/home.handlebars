@@ -1,0 +1,97 @@
+<section>
+    <div class="container d-flex flex-wrap justify-content-between align-items-center py-5 mx-auto">
+
+        <!--col izq-->
+        <div class="imagen py-5 d-flex flex-column col-lg-5 col-sm-10">
+            <div class="text-center mx-auto">
+                <img src="/ApiAnime2.png" alt="spy x family" class="imgHome mb-4">
+                <br><br><br>
+            </div>
+            <div class="text-light">
+                <h1 class="text-center mx-auto">Animación Japonesa</h1>
+                <p class="text-center mx-auto">Aquí encontrarás información de tus animes favoritos.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <!--col der-->
+        <div class="buscar py-5 col-lg-5 col-sm-10">
+            <h4 class="px-5 mx-3 text-center text-light mx-auto">Busca aquí tu anime</h4>
+            <div class="mx-4">
+                <input type="text" class="p-4 w-100 text-center mx-auto" id="inputBuscar" placeholder="Escribe nombre o id de un anime">
+            </div>
+            <div class="text-center mx-auto">
+                <button id="btnBuscar" class="btn mt-4">Buscar</button>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<script>
+    let btnBuscar = document.getElementById("btnBuscar");
+    let inputBtn = document.getElementById("inputBuscar");
+
+    btnBuscar.addEventListener('click', (event) => {
+        location.href = '/anime/' + inputBtn.value;
+    })
+</script>
+
+<style>
+    .imgHome {
+        width: 30vw;
+        display: block;
+        animation: mover 3s infinite ease-in-out;
+    }
+
+    hr {
+        height: 80vh;
+        width: 0.1vw;
+        border-width: 0;
+        background-color: white;
+
+    }
+
+    .btn {
+        background-color: rgb(226, 55, 140);
+        color: white;
+    }
+
+    .btn:hover {
+        background-color: rgb(228, 145, 186);
+        color: black;
+    }
+
+    @keyframes mover {
+        from {
+            transform: translateY(0);
+        }
+        65% {
+            transform: translatey(105px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @media(max-width: 991px){
+        hr{
+            display: none;
+        }
+        .buscar {
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+        .imagen {
+            margin: 0 auto;
+        }
+        .imagen, .buscar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+        }
+    }
+    
+</style>

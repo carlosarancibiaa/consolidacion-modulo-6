@@ -1,0 +1,28 @@
+<section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Genero</th>
+                <th scope="col">año</th>
+                <th scope="col">Autor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {{#each data}}
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.nombre}}</td>
+                <td>{{this.genero}}</td>
+                <td>{{this.año}}</td>
+                <td>{{this.autor}}</td>
+                {{/each}}
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="/animes">Volver</a>
+</div>

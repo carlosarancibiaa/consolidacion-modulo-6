@@ -1,0 +1,79 @@
+
+<section>
+    <div class="container text-center mx-auto py-5">
+        <h2 class="px-5 text-light">No somos más que un grupo de inocentes y adorables seres intentando aprender a
+            programar <i class="bi bi-laptop text-info"></i>
+        </h2>
+        <p class="text-success fw-bold textAbout">Da click en la imagen y conócenos!</p>
+        
+
+        <div class="py-5 imgAbout">
+            <img src="/tokio 2020.png" alt="Personajes anime" onclick="cambiarImagen(this)">
+        </div>
+
+        <div class="d-flex text-center align-items-center pt-5">
+            <h4 class="text-light">Trabajo realizado con:</h4>
+            <ul class="lista d-flex flex-wrap text-center mx-auto">
+                <li><a href="#">Node</a></li>
+                <li><a href="#">Express</a></li>
+                <li><a href="#">Handlebars</a></li>
+                <li><a href="#">Bootstrap</a> </li>
+                <li><a href="#">File System</a></li>
+                <li><a href="#">CORS</a></li>
+                <li><a href="#">Testing</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    //cambiar imagen
+    let imagenInicial = '/tokio 2020.png';
+    let contador = 0;
+
+    function cambiarImagen(elemento_img) {
+        let imagenes = [
+            '/Jasmine-PNG-Photos.png',
+            '/Paloma-min.png',
+            '/Abuelo_de_Billy.png',
+            '/e9d1ba23e4e48d04640a0d38684dc8fa.png',
+            '/png-transparent-bird-pixar-up.png'
+        ];
+
+        if(contador == imagenes.length){
+            elemento_img.src = imagenInicial;
+            contador = 0;
+        }else{
+            elemento_img.src = imagenes[contador];
+            contador++;
+        };
+    };
+</script>
+
+<style>
+    a {
+        color: pink;
+        text-decoration: none;
+        transition: 0.25s ease;
+    }
+    .lista li {
+        margin: 20px;
+    }
+    .lista:hover a {
+        color: blueviolet;
+    }
+    .lista:hover a:hover {
+        color: chartreuse;
+        box-shadow: 0 2px 0 0 currentColor;
+    }
+    .imgAbout {
+        filter: drop-shadow(12px 12px 7px rgba(70, 69, 69, 0.7));
+    }
+    .textAbout{
+        font-size: larger;
+    }
+    h4{
+        white-space: nowrap;
+    }
+
+</style>

@@ -1,0 +1,93 @@
+<nav class="nav-color navbar navbar-expand-lg" id="nav">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-5 btnNav" href="/home">Animación Japonesa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link btnNav" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btnNav" href="/about">Conocenos</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btnNav"><a class="nav-link" href="/animes">Animes</a></button>                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{{!-- <script>
+    //EVENTO SCROLL NAVBAR
+    window.addEventListener("scroll", function () {
+        let navbar = document.querySelector(".navbar");
+        navbar.classList.toggle("abajo", window.scrollY > 0);
+    })
+</script> --}}
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /*.navbar.abajo{
+        background-color: bisque;
+        height: 6rem;
+    }*/
+
+    .navbar {
+        height: 11rem;
+        background-image: url("/portada_japon-122.jpg");
+        /*background-image: url(../../public/portada_spy-x-family-87.jpg);*/
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: block;
+        /*background-color: rgb(228, 147, 165);*/
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        font-weight: bold;
+        opacity: 1;
+        color: white;
+        z-index: 1;
+    }
+
+    .nav-link:hover {
+        opacity: 1;
+        color: black;
+    }
+
+    .btnNav {
+        background-color: transparent;
+        border: none;
+        z-index: 0;
+    }
+
+    .btnNav:hover {
+        opacity: 0.6;
+        background-color: pink;
+        color: black;
+        border-radius: 20px;
+        padding: 5px;
+        z-index: 0;
+    }
+
+    .navbar-brand {
+        font-size: 2rem;
+        color: rgb(226, 55, 140);
+        font-weight: bold;
+        margin-top: 100px;
+    }
+
+    .navbar-nav{
+        margin-top: 100px;
+    }
+
+</style>

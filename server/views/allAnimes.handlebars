@@ -1,0 +1,17 @@
+<h1>Animes disponibles</h1>
+{{!--------------------------- formulario ----------------}}
+{{#if target}}
+        {{>form
+            data=target
+        }}
+    {{else}}
+        <h2>Se produjo un error...</h2>
+    {{/if}}
+    
+{{!------------------------------ tabla ----------------}}
+{{#if target}}
+    {{>table
+        data = target
+    }}
+    {{else}} <h2>Se produjo un error</h2>
+{{/if}}

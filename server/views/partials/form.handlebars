@@ -1,0 +1,92 @@
+{{!--------------------------------------------------------------- FORMULARIO --}}
+<section id="form" class="d-none">
+    <div class="w-75 mx-auto">
+        <h2 class="text-center">Formulario de creación de usuarios.</h2>
+        <form id="formCreateUser">
+            <label for="createNombre" class="form-label">Nombre</label>
+            <input value="" type="text" name="createNombre" id="createNombre" class="form-control" required>
+            <label for="createGenero" class="form-label">Genereo</label>
+            <input value="" type="text" name="createGenero" id="createGenero" class="form-control" required>
+            <label for="createAño" class="form-label">Año</label>
+            <input value="" type="text" name="createAño" id="createAño" class="form-control" required>
+            <label for="createAutor" class="form-label">Autor</label>
+            <input value="" type="text" name="createAutor" id="createAutor" class="form-control" required>
+            <input id="btnCrear" type="submit" value="Crear" class="btn btn-primary my-2 d-block">
+            <input id="btnActualizar" type="submit" value="Actualizar" class="btn btn-success my-2 d-block">
+        </form>
+    </div>
+</section>
+
+<script>
+    //capturamos el evento submit del formualrio para agregar y modificar
+    let formCreateUser = document.getElementById('formCreateUser')
+    formCreateUser.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        let selector = event.submitter.id
+        if (selector == "btnCrear") { //si quien desencadena el evento es el boton crear ejecutaremos el siguiente codigo
+
+            console.log('Capturando Anime nuevo');
+            try {
+                const raw = JSON.stringify({
+                    "nombre": createNombre.value,
+                    "genero": createGenero.value,
+                    "año": createAño.value,
+                    "autor": createAutor.value
+                })
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                let response = await fetch("/animes", {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                });
+
+                let data = await response.json();
+                if (data.code == 201) {
+                    alert("Usuario creado con éxito.")
+                    formCreateUser.reset();
+                    location.reload();
+                } else {
+                    throw new Error("Error al guardar los datos en la BD.")
+                }
+            } catch (error) {
+                alert(error.message)
+            }
+        } else if (selector == 'btnActualizar') {//si quien desencadena el evento es el boton actualizar ejecutaremos el siguiente codigo
+            console.log('Actualizando Anime');
+            try {
+                const raw = JSON.stringify({
+                    "id": id,
+                    "nombre": createNombre.value,
+                    "genero": createGenero.value,
+                    "año": createAño.value,
+                    "autor": createAutor.value
+                })
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                let response = await fetch("/animes", {
+                    method: "PUT",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                });
+
+                let data = await response.json();
+                if (data.code == 200) {
+                    alert("Usuario modificado con éxito.")
+                    formCreateUser.reset();
+                    location.reload();
+                } else {
+                    throw new Error("Error al modificar los datos en la BD.")
+                }
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+    })
+</script>

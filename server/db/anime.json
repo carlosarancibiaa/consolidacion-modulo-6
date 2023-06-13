@@ -1,0 +1,65 @@
+[
+    {
+        "id": "0",
+        "nombre": "berserk",
+        "genero": "seinen",
+        "año": "1998",
+        "autor": "kentaro miura"
+    },
+    {
+        "id": "1",
+        "nombre": "vinlad saga",
+        "genero": "seinen",
+        "año": "1999",
+        "autor": "ada"
+    },
+    {
+        "id": "2",
+        "nombre": "death note",
+        "genero": "seinen",
+        "año": "1999",
+        "autor": "asd"
+    },
+    {
+        "id": "3",
+        "nombre": "sailor moon",
+        "genero": "shonen",
+        "año": "1995|",
+        "autor": "ajaj"
+    },
+    {
+        "id": "4",
+        "nombre": "osama ranking",
+        "genero": "seinen",
+        "año": "1999",
+        "autor": "asaa"
+    },
+    {
+        "id": "5",
+        "nombre": "hunter x",
+        "genero": "shonens",
+        "año": "1999",
+        "autor": "paloma"
+    },
+    {
+        "id": "04",
+        "nombre": "naruto",
+        "genero": "shonen",
+        "año": "2001",
+        "autor": "kevin"
+    },
+    {
+        "id": "cc",
+        "nombre": "punpun",
+        "genero": "asd",
+        "año": "2000",
+        "autor": "asdas"
+    },
+    {
+        "id": "e6",
+        "nombre": "dragon ball",
+        "genero": "seinen",
+        "año": "1999",
+        "autor": "kkdsk"
+    }
+]
